@@ -1,6 +1,8 @@
-from tawpy import Tenor
+import os
 import requests
 import argparse
+
+from tawpy import Tenor
 
 def main():
     tenor = Tenor()
@@ -15,6 +17,7 @@ def main():
 
     # Variables
     filename = None
+    download_dir = os.path.join("downloads")
 
     # Mode
     if args.query:
@@ -26,13 +29,17 @@ def main():
         gifs = tenor.trending_gifs(limit=args.limit)
         filename = "trending"
 
+    # Create folder for downloaded gifs
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
     # Download
     for i, gif in enumerate(gifs):
         try:
             response = requests.get(gif, timeout=8)
             response.raise_for_status()
 
-            with open(f"gif_{filename}_{i}.gif", "wb") as f:
+            with open(f"{download_dir}/gif_{filename}_{i}.gif", "wb") as f:
                 f.write(response.content)
 
             print(f"Downloaded gif_{i}.gif")
