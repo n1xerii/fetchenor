@@ -1,2 +1,2 @@
 # fetchenor
- Quick and simple tool to fetch gifs from Tenor.
+ Quick and simple Python tool for fetching gifs from Tenor.
