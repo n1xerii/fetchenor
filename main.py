@@ -8,10 +8,10 @@ def main():
     tenor = Tenor()
 
     # Args
-    parser = argparse.ArgumentParser(description="Fetch GIFs from Tenor")
-    parser.add_argument("--query", type=str, help="Search term")
-    parser.add_argument("--trending", action="store_true", help="Fetch trending gifs")
-    parser.add_argument("--limit", type=int, default=1, help="Number of gifs")
+    parser = argparse.ArgumentParser(description="Fetch GIFs from Tenor.")
+    parser.add_argument("--query", type=str, help="Search term.")
+    parser.add_argument("--trending", action="store_true", help="Fetch trending gifs.")
+    parser.add_argument("--limit", type=int, default=1, help="Number of gifs. Limited to ~50.")
 
     args = parser.parse_args()
 
